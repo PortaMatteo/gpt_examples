@@ -78,15 +78,15 @@ class DataService():
 
     def remove_newlines(self,text):
         text = open(text, "r", encoding="UTF-8").read()
-        text = text.str.replace('\n', ' ')
-        text = text.str.replace('\\n', ' ')
-        text = text.str.replace('  ', ' ')
-        text = text.str.replace('  ', ' ')
+        text = text.replace('\n', ' ')
+        text = text.replace('\\n', ' ')
+        text = text.replace('  ', ' ')
+        text = text.replace('  ', ' ')
         return text
 
     def txt_to_embeddings(self, text, chunk_length: int = 1000):
         # Read data from pdf file and split it into chunks
-        reader = open(text, "r", encoding="UTF-8").read()
+        reader = text
         chunks = []
         chunks.extend([text_page[i:i+chunk_length].replace('\n', '')
                         for i in range(0, len(text_page), chunk_length)])
